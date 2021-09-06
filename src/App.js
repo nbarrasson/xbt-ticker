@@ -17,7 +17,6 @@ function App() {
     };
     ws.current.onmessage = function incoming(message) {
       const parsedData = JSON.parse(message.data)
-      // console.log(parsedData);
       if (!Array.isArray(parsedData)) return;
       setRate([...rate, parsedData[1].c[0]]);
     };
