@@ -1,9 +1,16 @@
-import './App.css';
-import Button from '@material-ui/core/Button';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import React, { useState, useEffect, useRef } from 'react';
+import {
+  Line,
+  LineChart,
+  XAxis,
+  YAxis
+} from 'recharts';
+
 const WebSocket = require('isomorphic-ws');
 
-function App() {
+const App = ({ }) => {
   const [rate, setRate] = useState([0]);
   const ws = useRef(null);
   useEffect(() => {
@@ -18,15 +25,20 @@ function App() {
     ws.current.onmessage = function incoming(message) {
       const parsedData = JSON.parse(message.data)
       if (!Array.isArray(parsedData)) return;
-      setRate([...rate, parsedData[1].c[0]]);
+      setRate(currentRate => [...currentRate, parsedData[1].c[0]]);
     };
   }, [])
 
   return (
-    <Button variant="contained" color="primary">
-      {rate[rate.length - 1]}
-    </Button>
+    <div>
+      <h1>Real Time XBT</h1>
+      <LineChart width={500} height={300} data={rate}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Line dataKey="value" />
+      </LineChart>
+    </div>
   );
-}
+};
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
