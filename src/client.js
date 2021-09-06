@@ -10,7 +10,7 @@ import {
 const WebSocket = require('isomorphic-ws');
 
 const App = ({ }) => {
-  const [rate, setRate] = useState([0]);
+  const [rate, setRate] = useState([]);
   const ws = useRef(null);
   useEffect(() => {
     ws.current = new WebSocket('wss://apim-nibarras-dev.azure-api.net/kraken');
@@ -27,10 +27,11 @@ const App = ({ }) => {
       setRate(currentRate => [...currentRate, parsedData[1].c[0]]);
     };
   }, [])
-
+  console.log(rate);
   return (
     <div>
       <h1>Real Time XBT</h1>
+      {rate}
       <LineChart width={500} height={300} data={rate}>
         <XAxis dataKey="name" />
         <YAxis />
