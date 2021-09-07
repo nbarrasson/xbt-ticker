@@ -4,7 +4,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 const WebSocket = require('isomorphic-ws');
 
-var ws = new WebSocket('wss://apim-nibarras-dev.azure-api.net/kraken');
+var ws = new WebSocket('#{WSSURL}#');
 ws.onopen = function open() {
   console.log('connected to ' + ws.url);
   ws.send('{ "event": "subscribe", "pair": ["XBT/USD"], "subscription": { "name": "ticker" } }');
