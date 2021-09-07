@@ -28,7 +28,7 @@ const App = ({ }) => {
       <LineChart width={1000} height={300} data={tick}>
         <Line type="monotone" dataKey="xbt" stroke="#8884d8" dot={false} />
         <CartesianGrid stroke="#ccc" />
-        <XAxis hide="true" dataKey="time" interval="preserveEnd" />
+        <XAxis hide="true" dataKey="time" interval="preserveEnd" domain={['0', '500']} />
         <YAxis type="number" domain={['dataMin', 'dataMax']} />
       </LineChart>
     </div>
