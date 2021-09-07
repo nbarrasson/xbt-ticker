@@ -10,4 +10,4 @@ Packages used :
 
 The purpose of this sample is to demo Azure API Management new WebSocket support.
 
-Thank you [@matthieugi](https://github.com/matthieugi) for your precious help.
+Many thanks [@matthieugi](https://github.com/matthieugi) for your precious help.
