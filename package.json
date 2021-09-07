@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run start:client",
     "start:client": "parcel src/index.html",
-    "build:azure": "npm run build"
+    "build:azure": "npm run start:client"
   },
   "keywords": [],
   "author": "",
